@@ -25,6 +25,8 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Colors.white,
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        enableFeedback: true,
+        useLegacyColorScheme: false,
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         selectedItemColor: Colors.black54,
