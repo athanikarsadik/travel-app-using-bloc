@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/cubit/app_cubit_logics.dart';
 import 'package:travel_app/cubit/app_cubits.dart';
+import 'package:travel_app/pages/detail_pages.dart/cubit/store_page_info_cubits.dart';
 import 'package:travel_app/services/data_services.dart';
 
 void main() {
@@ -23,9 +24,13 @@ class MyApp extends StatelessWidget {
                 iconTheme: IconThemeData(color: Colors.black),
                 elevation: 0,
                 backgroundColor: Colors.white)),
-        home: BlocProvider<AppCubits>(
+        home: MultiBlocProvider(providers: [
+          BlocProvider<AppCubits>(
           create: (context) => AppCubits(data: DataServices()),
-          child: AppCubitLogics(),
-        ));
+        ),
+        BlocProvider<StorePageInfoCubits>(
+          create: (context) => StorePageInfoCubits(),
+        ),
+        ], child: const AppCubitLogics()));
   }
 }
